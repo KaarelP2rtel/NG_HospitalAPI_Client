@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model HomeVM
+
+<div class="container">
+    <h2>
+        Greatest Diseases
+    </h2>
+    @foreach (var d in Model.GreatestDiseases)
+    {
+        <div class="container">
+            <h4>@d.Name</h4>
+        </div>
+    }
+    <h2>
+        Number of unique symptoms in database
+    </h2>
+    <div class="container">
+        <h4>@Model.SymptomsCount</h4>
+    </div>
+
+        <h2>
+        Greatest Symptoms
+    </h2>
+    @foreach (var s in Model.GreatestSymptoms)
+    {
+        <div class="container">
+            <h4>@s.Name</h4>
+        </div>
+    }
+</div>

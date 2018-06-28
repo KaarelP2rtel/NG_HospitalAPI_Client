@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model SearchVM
+
+
+<div class="container">
+    <h2>Search</h2>
+    <form asp-action="Results" class="form-inline">
+        <select asp-items="Model.Symptoms"
+                asp-for="SelectedSymptoms"
+                id="symptomSelect"
+                class="form-control selectpicker col-lg-12"
+                data-live-search="true"
+                multiple
+                
+                data-none-selected-text="Select symptoms"></select>
+
+        <button type="button" onclick="$('.selectpicker').selectpicker('deselectAll');" class="btn">Clear</button>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <h4>
+        <span asp-validation-for="SelectedSymptoms"></span>
+    </h4>
+    
+    @if (Model.DiseaseResults != null)
+    {
+        @if (Model.DiseaseResults.Count > 0)
+        {
+            <h3>Possible diseases</h3>
+            @foreach (var disease in Model.DiseaseResults)
+            {
+                <div class="container">
+                    <h4>@disease.Name</h4>
+                </div>
+
+            }
+        }
+        else
+        {
+            <h3>No diseases found</h3>
+
+        }
+
+    }
+</div>
+@section Scripts{
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css"
+          asp-fallback-href="/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"
+            asp-fallback-src="/js/bootstrap-select.min.js"></script>
+    <script>
+        $('#symptomSelect').on('changed.bs.select', function (e) {
+
+            $('.selectpicker').selectpicker('refresh');
+
+        });
+    </script>
+
+}

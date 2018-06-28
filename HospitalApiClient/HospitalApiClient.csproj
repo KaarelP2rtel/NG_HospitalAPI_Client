@@ -5,11 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap-select" Version="1.13.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\NewFolder\" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
 </Project>
